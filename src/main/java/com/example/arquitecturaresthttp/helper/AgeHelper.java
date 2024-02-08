@@ -5,15 +5,11 @@ import java.time.Period;
 
 public class AgeHelper {
 
-    public static boolean isValidBirthday(int day, int month, int year){
-        LocalDate currentDate = LocalDate.now();
-        LocalDate birthDay = LocalDate.of(year, month, day);
-        return currentDate.isAfter(birthDay);
+    public static boolean isValidBirthday(int day, int month, int year) {
+        return LocalDate.now().isAfter(LocalDate.of(year, month, day));
     }
 
-    public static int getAgeByBirthday(int day, int month, int year){
-        LocalDate currentDate = LocalDate.now();
-        LocalDate birthDay = LocalDate.of(year, month, day);
-        return Period.between(birthDay, currentDate).getYears();
+    public static int getAgeByBirthday(int day, int month, int year) {
+        return Period.between(LocalDate.now(), LocalDate.of(year, month, day)).getYears();
     }
 }
